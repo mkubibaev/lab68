@@ -12,14 +12,9 @@ const Task = props => {
 						label={button.label}
 						btnStyle={button.btnStyle}
 						type={button.type}
+						clicked={button.clicked}
 					/>
 				))}
-				{/*<input type="button"*/}
-					   {/*className="delete btn btn-sm btn-outline-danger w-50 mr-1"*/}
-					   {/*value="Delete"/>*/}
-				{/*<input type="button"*/}
-					   {/*className="move btn btn-sm btn-secondary w-50"*/}
-					   {/*value="In Progress >"/>*/}
 			</div>
 		</div>
 	);

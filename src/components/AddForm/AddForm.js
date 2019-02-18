@@ -3,10 +3,15 @@ import Button from "../UI/Button/Button";
 
 const AddForm = props => {
 	return (
-		<form>
+		<form onSubmit={props.submitted}>
 			<div className="row mb-5">
 				<div className="col-12 col-sm-10 mb-2">
-					<input type="text" className="form-control"/>
+					<input
+
+						onChange={props.changed}
+						type="text"
+						className="form-control"
+					/>
 				</div>
 				<div className="col-12 col-sm-2">
 					<Button
@@ -14,7 +19,6 @@ const AddForm = props => {
 						btnStyle="primary w-100"
 						label="Add"
 					/>
-					{/*<button className="primary" type="submit">Add</button>*/}
 				</div>
 			</div>
 		</form>
