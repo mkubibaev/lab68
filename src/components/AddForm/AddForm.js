@@ -7,7 +7,7 @@ const AddForm = props => {
 			<div className="row mb-5">
 				<div className="col-12 col-sm-10 mb-2">
 					<input
-
+						value={props.value}
 						onChange={props.changed}
 						type="text"
 						className="form-control"

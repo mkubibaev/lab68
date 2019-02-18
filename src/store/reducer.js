@@ -1,4 +1,4 @@
-import {TASKS_REQUEST, GET_TASKS_SUCCESS, ENTER_TASK} from "./actions";
+import {TASKS_REQUEST, GET_TASKS_SUCCESS, ENTER_TASK, GET_TASKS_ERROR} from "./actions";
 
 const initialState = {
 	todo: {},
@@ -17,8 +17,14 @@ const reducer = (state = initialState, action) => {
 			};
 		case GET_TASKS_SUCCESS:
 			return {
-				...state,
+				...initialState,
 				...action.tasks,
+				loading: false
+			};
+		case GET_TASKS_ERROR:
+			return {
+				...initialState,
+				error: action.error,
 				loading: false
 			};
 		case ENTER_TASK:

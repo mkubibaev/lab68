@@ -12,8 +12,8 @@ export const tasksRequest = () => {
 export const getTasksSuccess = tasks => {
 	return {type: GET_TASKS_SUCCESS, tasks}
 };
-export const getTasksError = () => {
-	return {type: GET_TASKS_ERROR}
+export const getTasksError = error => {
+	return {type: GET_TASKS_ERROR, error}
 };
 
 export const getTasks = () => {
@@ -22,7 +22,7 @@ export const getTasks = () => {
 		axios.get('todoApp.json').then(response => {
 			dispatch(getTasksSuccess(response.data));
 		}, error => {
-			dispatch(getTasksError());
+			dispatch(getTasksError(error));
 		});
 	}
 };
@@ -34,10 +34,14 @@ export const enterTask = task => {
 export const addTask = event => {
 	event.preventDefault();
 	return async (dispatch, getState) => {
-		dispatch(tasksRequest());
-		const task = {text: getState().currentTask};
-		await axios.post('todoApp/todo.json', task);
-		dispatch(getTasks());
+		if (getState().currentTask !== '') {
+			dispatch(tasksRequest());
+			const task = {text: getState().currentTask};
+			await axios.post('todoApp/todo.json', task);
+			dispatch(getTasks());
+		} else {
+			alert('Enter task!')
+		}
 	}
 };
 

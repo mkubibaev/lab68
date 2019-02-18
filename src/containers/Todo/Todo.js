@@ -90,7 +90,7 @@ class Todo extends Component {
 				<h1 className="text-center mb-3">To Do list</h1>
 
 				<AddForm
-
+					value={this.props.currentTask}
 					changed={this.props.enterTask}
 					submitted={this.props.addTask}
 				/>
