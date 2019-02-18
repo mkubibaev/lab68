@@ -47,3 +47,21 @@ export const deleteTask = id => {
 		dispatch(getTasks());
 	}
 };
+
+export const moveToInProgress = id => {
+	return async (dispatch, getState) => {
+		const task = getState().todo[id];
+		await axios.delete(`todoApp/todo/${id}.json`);
+		await axios.post(`todoApp/inProgress.json`, task);
+		dispatch(getTasks());
+	}
+};
+
+export const moveToDone = id => {
+	return async (dispatch, getState) => {
+		const task = getState().inProgress[id];
+		await axios.delete(`todoApp/inProgress/${id}.json`);
+		await axios.post(`todoApp/done.json`, task);
+		dispatch(getTasks());
+	}
+};
